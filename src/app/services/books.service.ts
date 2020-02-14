@@ -14,15 +14,26 @@ export class BooksService {
   public favBooks = [];
 
   searchBooks(bookName: string) {
+    this.ifSearchBeenMade();
     this.httpClient
       .get(environment.SEARCH_BOOK_ENDPOINT + bookName)
       .subscribe((data: any) =>
         data.items.map((item: any) => {
-          this.bookSearchResults.push(item.volumeInfo.title),
+          this.bookSearchResults.push([
+            item.volumeInfo.title,
+            item.volumeInfo.description,
+            item.volumeInfo.imageLinks.smallThumbnail
+          ]),
             this.bookIdCache.push(item.id);
         })
       );
     return this.bookSearchResults;
+  }
+
+  ifSearchBeenMade() {
+    if (this.bookSearchResults.length > 0) {
+      this.bookSearchResults = [];
+    }
   }
 
   addBookToFav(bookIndex: string) {

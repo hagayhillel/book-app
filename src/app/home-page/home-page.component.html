@@ -1,3 +1,40 @@
-<button (click)="searchBook()">dasdsd</button>
+<div class="search">
+  <mat-form-field>
+    <mat-icon matPrefix style="margin: 0 10px;">search</mat-icon>
 
-<p *ngFor="let i of booksServiceSearchDuplicate">{{ i }}</p>
+    <input
+      matInput
+      type="search"
+      placeholder="search here"
+      class="search-input"
+      [formControl]="search"
+    />
+  </mat-form-field>
+  <button
+    mat-stroked-button
+    color="primary"
+    (click)="searchBook(this.search.value)"
+    style="margin: 0 10px"
+    [disabled]="this.search.value.length === 0"
+  >
+    Search
+  </button>
+</div>
+
+<mat-accordion *ngFor="let i of booksServiceSearchDuplicate">
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon style="margin-right: 10px">chrome_reader_mode</mat-icon>
+        {{ i[0] }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <h3>Description</h3>
+    <p>{{ i[1] || "Description not found" }}</p>
+    <img src="{{ i[2] || '' }}" />
+  </mat-expansion-panel>
+</mat-accordion>

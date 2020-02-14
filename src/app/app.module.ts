@@ -13,7 +13,9 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatExpansionModule,
+  MatIconModule
 } from "@angular/material";
 
 import { LoginService } from "src/app/services/login.service";
@@ -40,7 +42,9 @@ import { LoginPageComponent } from "./login-page/login-page.component";
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
