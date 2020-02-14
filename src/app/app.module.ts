@@ -5,6 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
 import {
   MatSliderModule,
   MatMenuModule,
@@ -38,7 +39,8 @@ import { LoginPageComponent } from "./login-page/login-page.component";
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
