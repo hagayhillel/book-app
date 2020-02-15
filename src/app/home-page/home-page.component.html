@@ -21,7 +21,16 @@
   </button>
 </div>
 
-<mat-accordion *ngFor="let i of booksServiceSearchDuplicate">
+<mat-accordion
+  *ngFor="
+    let i of booksServiceSearchDuplicate
+      | paginate
+        : {
+            itemsPerPage: 8,
+            currentPage: p
+          }
+  "
+>
   <mat-expansion-panel
     (opened)="panelOpenState = true"
     (closed)="panelOpenState = false"
@@ -35,6 +44,11 @@
 
     <h3>Description</h3>
     <p>{{ i[1] || "Description not found" }}</p>
-    <img src="{{ i[2] || '' }}" />
+    <img src="{{ i[2] }}" />
   </mat-expansion-panel>
 </mat-accordion>
+<pagination-controls
+  (pageChange)="p = $event"
+  *ngIf="this.booksServiceSearchDuplicate.length !== 0"
+  class="pagination"
+></pagination-controls>

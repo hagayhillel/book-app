@@ -9,3 +9,22 @@ mat-expansion-panel-header {
   border-bottom: 1px solid #3f51b5;
   margin: 10px 0 0 0;
 }
+.pagination {
+  text-align: center;
+  font-size: 15px;
+}
+
+::ng-deep .pagination .ngx-pagination .current {
+  background: #3f51b5;
+  border-radius: 4px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+::ng-deep .pagination .ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+  text-decoration: none;
+  margin: -1px;
+}

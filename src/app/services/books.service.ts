@@ -16,16 +16,18 @@ export class BooksService {
   searchBooks(bookName: string) {
     this.ifSearchBeenMade();
     this.httpClient
-      .get(environment.SEARCH_BOOK_ENDPOINT + bookName)
-      .subscribe((data: any) =>
-        data.items.map((item: any) => {
-          this.bookSearchResults.push([
-            item.volumeInfo.title,
-            item.volumeInfo.description,
-            item.volumeInfo.imageLinks.smallThumbnail
-          ]),
-            this.bookIdCache.push(item.id);
-        })
+      .get(environment.SEARCH_BOOK_ENDPOINT + bookName + "&maxResults=40")
+      .subscribe(
+        (data: any) =>
+          data.items.map((item: any) => {
+            this.bookSearchResults.push([
+              item.volumeInfo.title,
+              item.volumeInfo.description,
+              item.volumeInfo.imageLinks.smallThumbnail
+            ]),
+              this.bookIdCache.push(item.id);
+          }),
+        err => alert(err)
       );
     return this.bookSearchResults;
   }

@@ -10,7 +10,7 @@ import { FormControl, Validators } from "@angular/forms";
 })
 export class HomePageComponent implements OnInit {
   constructor(private BooksService: BooksService) {}
-  private booksServiceSearchDuplicate;
+  private booksServiceSearchDuplicate = [];
   panelOpenState = false;
   ngOnInit() {}
 
