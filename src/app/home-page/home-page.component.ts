@@ -25,10 +25,12 @@ export class HomePageComponent implements OnInit {
   }
 
   addBookToFav(book) {
+    event.stopPropagation();
     this.BooksService.addBookToFav(book);
   }
 
   removeFromFav(book) {
+    event.stopPropagation();
     this.BooksService.removeBookFromFav(book);
   }
 }
