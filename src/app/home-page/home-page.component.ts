@@ -19,4 +19,16 @@ export class HomePageComponent implements OnInit {
   searchBook(bookName: string) {
     this.booksServiceSearchDuplicate = this.BooksService.searchBooks(bookName);
   }
+
+  checkIfInFav(book) {
+    return this.BooksService.ifBookInFavOrNot(book);
+  }
+
+  addBookToFav(book) {
+    this.BooksService.addBookToFav(book);
+  }
+
+  removeFromFav(book) {
+    this.BooksService.removeBookFromFav(book);
+  }
 }

@@ -28,7 +28,8 @@
         : {
             itemsPerPage: 8,
             currentPage: p
-          }
+          };
+    let n = index
   "
 >
   <mat-expansion-panel
@@ -38,8 +39,22 @@
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon style="margin-right: 10px">chrome_reader_mode</mat-icon>
+
         {{ i[0] }}
       </mat-panel-title>
+
+      <mat-icon
+        *ngIf="checkIfInFav(i)"
+        style="margin-right: 10px"
+        (click)="removeFromFav(i)"
+        >favorite</mat-icon
+      >
+      <mat-icon
+        *ngIf="!checkIfInFav(i)"
+        style="margin-right: 10px"
+        (click)="addBookToFav(i)"
+        >favorite_border</mat-icon
+      >
     </mat-expansion-panel-header>
 
     <h3>Description</h3>

@@ -9,7 +9,6 @@ import { identifierModuleUrl } from "@angular/compiler";
 export class BooksService {
   constructor(private httpClient: HttpClient) {}
 
-  public bookIdCache = [];
   public bookSearchResults = [];
   public favBooks = [];
 
@@ -23,12 +22,13 @@ export class BooksService {
             this.bookSearchResults.push([
               item.volumeInfo.title,
               item.volumeInfo.description,
-              item.volumeInfo.imageLinks.smallThumbnail
-            ]),
-              this.bookIdCache.push(item.id);
+              item.volumeInfo.imageLinks.smallThumbnail,
+              item.id
+            ]);
           }),
         err => alert(err)
       );
+
     return this.bookSearchResults;
   }
 
@@ -38,17 +38,24 @@ export class BooksService {
     }
   }
 
-  addBookToFav(bookIndex: string) {
-    this.favBooks.push(this.bookSearchResults[bookIndex]);
+  addBookToFav(book) {
+    this.favBooks.push(book);
   }
 
-  removeBookFromFav(bookIndex: string) {
-    this.favBooks = this.favBooks.filter(
-      id => this.bookSearchResults[bookIndex] == id
-    );
+  removeBookFromFav(book) {
+    for (let item = 0; item < this.favBooks.length; item++) {
+      if (this.favBooks[item][3] === book[3]) {
+        this.favBooks.splice(item, 1);
+      }
+    }
   }
 
-  ifBookInFavOrNot(bookIndex: string) {
-    return this.bookIdCache.includes(bookIndex);
+  ifBookInFavOrNot(book) {
+    for (let item = 0; item < this.favBooks.length; item++) {
+      if (this.favBooks[item][3] === book[3]) {
+        return true;
+      }
+    }
+    return false;
   }
 }
