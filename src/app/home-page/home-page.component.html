@@ -1,3 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Home Page</span>
+    <span class="spacer"></span>
+    <button mat-raised-button (click)="navigate()">
+      <mat-icon style="margin-right: 5px;">favorites</mat-icon>
+      Favorites Page
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
 <div class="search">
   <mat-form-field>
     <mat-icon matPrefix style="margin: 0 10px;">search</mat-icon>
@@ -67,4 +77,3 @@
   *ngIf="this.booksServiceSearchDuplicate.length !== 0"
   class="pagination"
 ></pagination-controls>
-<button (click)="navigate()"></button>

@@ -1,0 +1,22 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.example-card {
+  margin: 15px;
+  max-width: 20%;
+}
+.title-and-remove {
+  width: 100%;
+  font-size: calc(0.3vw + 0.4vh);
+}
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+img {
+  max-height: 8vw;
+  max-width: 5vw;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

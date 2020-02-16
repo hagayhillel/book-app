@@ -9,10 +9,16 @@ import { Router } from "@angular/router";
 })
 export class FavoritesPageComponent implements OnInit {
   constructor(private BooksService: BooksService, private router: Router) {}
-
+  public favBooks;
   ngOnInit() {
     this.favBooks = this.BooksService.favBooks;
   }
 
-  public favBooks;
+  removeFromFavorites(book) {
+    this.BooksService.removeBookFromFav(book);
+  }
+
+  navigate() {
+    this.router.navigate(["/home"]);
+  }
 }

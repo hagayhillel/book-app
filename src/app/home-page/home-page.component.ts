@@ -13,7 +13,9 @@ export class HomePageComponent implements OnInit {
   constructor(private BooksService: BooksService, private router: Router) {}
   private booksServiceSearchDuplicate = [];
   panelOpenState = false;
-  ngOnInit() {}
+  ngOnInit() {
+    this.booksServiceSearchDuplicate = this.BooksService.bookSearchResults;
+  }
 
   private search = new FormControl("", Validators.required);
 
@@ -28,13 +30,11 @@ export class HomePageComponent implements OnInit {
   addBookToFav(book) {
     event.stopPropagation();
     this.BooksService.addBookToFav(book);
-    console.log(this.BooksService.favBooks);
   }
 
   removeFromFav(book) {
     event.stopPropagation();
     this.BooksService.removeBookFromFav(book);
-    console.log(this.BooksService.favBooks);
   }
 
   navigate() {
