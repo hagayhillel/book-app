@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { BooksService } from "src/app/services/books.service";
 import { MatAccordion } from "@angular/material";
 import { FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home-page",
@@ -9,7 +10,7 @@ import { FormControl, Validators } from "@angular/forms";
   styleUrls: ["./home-page.component.scss"]
 })
 export class HomePageComponent implements OnInit {
-  constructor(private BooksService: BooksService) {}
+  constructor(private BooksService: BooksService, private router: Router) {}
   private booksServiceSearchDuplicate = [];
   panelOpenState = false;
   ngOnInit() {}
@@ -27,10 +28,16 @@ export class HomePageComponent implements OnInit {
   addBookToFav(book) {
     event.stopPropagation();
     this.BooksService.addBookToFav(book);
+    console.log(this.BooksService.favBooks);
   }
 
   removeFromFav(book) {
     event.stopPropagation();
     this.BooksService.removeBookFromFav(book);
+    console.log(this.BooksService.favBooks);
+  }
+
+  navigate() {
+    this.router.navigate(["/favorites"]);
   }
 }

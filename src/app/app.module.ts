@@ -23,6 +23,7 @@ import { LoginService } from "src/app/services/login.service";
 import { HomePageComponent } from "./home-page/home-page.component";
 import { FavoritesPageComponent } from "./favorites-page/favorites-page.component";
 import { LoginPageComponent } from "./login-page/login-page.component";
+import { BooksService } from "./services/books.service";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { LoginPageComponent } from "./login-page/login-page.component";
     MatIconModule,
     NgxPaginationModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
