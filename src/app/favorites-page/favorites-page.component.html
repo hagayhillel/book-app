@@ -10,7 +10,9 @@
 </mat-toolbar>
 
 <div class="wrapper">
-  <h1 *ngIf="this.favBooks.length === 0">No favorite books added</h1>
+  <h1 *ngIf="this.favBooks.length === 0">
+    No favorite books added, click on the heart icon to add your favorite books
+  </h1>
   <mat-card class="example-card" *ngFor="let i of favBooks">
     <mat-card-header>
       <mat-card-title class="title-and-remove">{{ i[0] }}</mat-card-title>
