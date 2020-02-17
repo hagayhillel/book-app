@@ -38,11 +38,11 @@ export class BooksService {
     }
   }
 
-  addBookToFav(book) {
+  addBookToFav(book: Array<any>) {
     this.favBooks.push(book);
   }
 
-  removeBookFromFav(book) {
+  removeBookFromFav(book: Array<any>) {
     for (let item = 0; item < this.favBooks.length; item++) {
       if (this.favBooks[item][3] === book[3]) {
         this.favBooks.splice(item, 1);
@@ -50,7 +50,7 @@ export class BooksService {
     }
   }
 
-  ifBookInFavOrNot(book) {
+  ifBookInFavOrNot(book: Array<any>) {
     for (let item = 0; item < this.favBooks.length; item++) {
       if (this.favBooks[item][3] === book[3]) {
         return true;
